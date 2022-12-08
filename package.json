@@ -9,10 +9,53 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "ejs": "^3.1.8",
+  "dependencies": {
+    "mongoose": "^6.8.0",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.7.0",
+    "nodemon": "^1.19.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "ejs": "^3.1.8"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
   }
 }
