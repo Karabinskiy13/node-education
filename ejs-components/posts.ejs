@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./partials/header.ejs') %>
-<body>
-  <%- include('./partials/nav.ejs') %>
-  <h1>Posts:</h1>
-  <ul>
-    <% if (posts.length) { %>
-      <% posts.forEach(({ id, title, date, text, author }) => { %>
-        <li>
-          <article>
-            <h2>
-              <a href="/posts/<%= id %>"><%= title %></a>
-            </h2>
-            <p><%= text %></p>
-            <div class="info">
-              <span><%= date %></span>
-              <span><%= author %></span>
-            </div>
-          </article>
-        </li>
-      <% }) %>
-    <% } %>
-  </ul>
-</body>
+<%- include('./partials/header.ejs') %>
+
+  <body>
+    <%- include('./partials/nav.ejs') %>
+      <h1>Posts:</h1>
+      <ul>
+        <% if (posts.length) { %>
+          <% posts.forEach(({ id, title, date, text, author })=> { %>
+            <li>
+              <article>
+                <h2>
+                  <a href="/posts/<%= id %>">
+                    <%= title %>
+                  </a>
+                </h2>
+                <p>
+                  <%= text %>
+                </p>
+                <div class="info">
+                  <span>
+                    <%= date %>
+                  </span>
+                  <span>
+                    <%= author %>
+                  </span>
+                </div>
+              </article>
+            </li>
+            <% }) %>
+              <% } %>
+      </ul>
+
+      <script>
+        document.addEventListener('click', (e) => {
+          const id = e.target?.dataset?.id || null;
+          if (id) {
+            fetch(`/posts/${id}`, {
+              method: 'DELETE',
+            }).then(() => {
+              window.location.reload();
+            });
+          }
+        });
+      </script>
+
+  </body>
+
 </html>

@@ -77,6 +77,17 @@ app.post('/add-post', (req, res) => {
     });
 });
 
+app.delete('/posts/:id', (req, res) => {
+  Post.findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.render(createPath('error'), { title: 'Error' });
+    });
+});
+
 app.get('/add-post', (req, res) => {
   const title = 'Add Post';
   res.render(createPath('add-post'), { title });

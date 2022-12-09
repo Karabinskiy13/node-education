@@ -1,8 +1,7 @@
-
 body {
   padding-top: 80px;
   min-height: calc(100vh - 90px);
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   background: linear-gradient(to bottom, #00d2ff, #928dab);
   color: #fff;
@@ -53,11 +52,17 @@ article {
   padding: 10px 20px;
   border-radius: 3px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .info {
   display: flex;
   justify-content: space-between;
+}
+
+.post .info {
+  justify-content: flex-start;
+  gap: 50px;
 }
 
 h2 a {
@@ -126,7 +131,7 @@ textarea {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   background: linear-gradient(to bottom, #00d2ff, #928dab);
   color: #fff;
@@ -147,4 +152,33 @@ textarea {
   text-transform: uppercase;
   font-size: 160px;
   margin-bottom: 20px;
+}
+
+.btn-edit,
+.btn-delete {
+  position: absolute;
+  top: 10px;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid #000;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  width: 48px;
+  border-radius: 3px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.btn-edit,
+.btn-delete:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.btn-edit {
+  right: 65px;
+}
+
+.btn-delete {
+  right: 10px;
 }
