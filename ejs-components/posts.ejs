@@ -7,7 +7,7 @@
       <h1>Posts:</h1>
       <ul>
         <% if (posts.length) { %>
-          <% posts.forEach(({ id, title, date, text, author })=> { %>
+          <% posts.forEach(({ id, title, createdAt, text, author })=> { %>
             <li>
               <article>
                 <h2>
@@ -20,12 +20,15 @@
                 </p>
                 <div class="info">
                   <span>
-                    <%= date %>
+                    <%= createdAt.toLocaleDateString() %>
                   </span>
                   <span>
                     <%= author %>
                   </span>
                 </div>
+                <button class="btn-delete" data-id="<%= id %>">
+                  <i class="fas fa-trash-alt" data-id="<%= id %>"></i>
+                </button>
               </article>
             </li>
             <% }) %>
@@ -44,7 +47,6 @@
           }
         });
       </script>
-
   </body>
 
 </html>

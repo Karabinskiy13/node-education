@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require('express');
 const path = require('path');
+const methodOverride = require('method-override');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Post = require('./models/post');
@@ -29,6 +30,8 @@ app.listen(PORT, (error) => {
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
+app.use(methodOverride('_method'));
+
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('styles'));
@@ -48,6 +51,27 @@ app.get('/posts/:id', (req, res) => {
   const title = 'Post';
   Post.findById(req.params.id)
     .then((post) => res.render(createPath('post'), { post, title }))
+    .catch((error) => {
+      console.log(error);
+      res.render(createPath('error'), { title: 'Error' });
+    });
+});
+
+app.get('/edit/:id', (req, res) => {
+  const title = 'Edit post';
+  Post.findById(req.params.id)
+    .then((post) => res.render(createPath('edit-post'), { post, title }))
+    .catch((error) => {
+      console.log(error);
+      res.render(createPath('error'), { title: 'Error' });
+    });
+});
+
+app.put('/edit/:id', (req, res) => {
+  const { title, author, text } = req.body;
+  const { id } = req.params;
+  Post.findByIdAndUpdate(id, { title, author, text })
+    .then((result) => res.redirect(`/posts/${id}`))
     .catch((error) => {
       console.log(error);
       res.render(createPath('error'), { title: 'Error' });
